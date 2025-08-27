@@ -10,8 +10,10 @@ import type {
 } from './ControllerConnectedEvent';
 import type { PlaybackActiveTrackChangedEvent } from './PlaybackActiveTrackChangedEvent';
 import type { PlaybackErrorEvent } from './PlaybackErrorEvent';
+import type { PlaybackRepeatModeChangedEvent } from './PlaybackRepeatModeChangedEvent';
 import type { PlaybackPlayWhenReadyChangedEvent } from './PlaybackPlayWhenReadyChangedEvent';
 import type { PlaybackProgressUpdatedEvent } from './PlaybackProgressUpdatedEvent';
+import type { PlaybackShuffleModeChangedEvent } from './PlaybackShuffleModeChangedEvent';
 import type { PlaybackQueueEndedEvent } from './PlaybackQueueEndedEvent';
 import type { PlaybackResumeEvent } from './PlaybackResumeEvent';
 import type { PlayerErrorEvent } from './PlayerErrorEvent';
@@ -31,6 +33,8 @@ export type EventPayloadByEvent = {
   [Event.PlaybackQueueEnded]: PlaybackQueueEndedEvent;
   [Event.PlaybackActiveTrackChanged]: PlaybackActiveTrackChangedEvent;
   [Event.PlaybackPlayWhenReadyChanged]: PlaybackPlayWhenReadyChangedEvent;
+  [Event.PlaybackRepeatModeChanged]: PlaybackRepeatModeChangedEvent;
+  [Event.PlaybackShuffleModeChanged]: PlaybackShuffleModeChangedEvent;
   [Event.PlaybackProgressUpdated]: PlaybackProgressUpdatedEvent;
   [Event.RemotePlay]: never;
   [Event.RemotePlayPause]: never;

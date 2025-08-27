@@ -373,6 +373,19 @@ abstract class BaseAudioPlayer internal constructor(
             playerEventHolder.updatePlayWhenReadyChange(PlayWhenReadyChangeData(playWhenReady, pausedBecauseReachedEnd))
         }
 
+        override fun onRepeatModeChanged(repeatMode: Int) {
+            val mode = when (repeatMode) {
+                Player.REPEAT_MODE_ALL -> RepeatMode.ALL
+                Player.REPEAT_MODE_ONE -> RepeatMode.ONE
+                else -> RepeatMode.OFF
+            }
+            playerEventHolder.updateRepeatModeChange(mode)
+        }
+
+        override fun onShuffleModeEnabledChanged(shuffleModeEnabled: Boolean) {
+            playerEventHolder.updateShuffleModeChange(shuffleModeEnabled)
+        }
+
         /**
          * The generic onEvents callback provides access to the Player object and specifies the set
          * of events that occurred together. It’s always called after the callbacks that correspond

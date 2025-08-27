@@ -17,6 +17,14 @@ export enum Event {
    **/
   PlaybackPlayWhenReadyChanged = 'playback-play-when-ready-changed',
   /**
+   * Fired when the repeat mode changes.
+   */
+  PlaybackRepeatModeChanged = 'playback-repeat-mode-changed',
+  /**
+   * Fired when the shuffle mode changes.
+   */
+  PlaybackShuffleModeChanged = 'playback-shuffle-mode-changed',
+  /**
    * Fired when playback progress has been updated.
    * See https://rntp.dev/docs/api/events#playbackprogressupdated
    **/

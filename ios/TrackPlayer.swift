@@ -528,6 +528,12 @@ public class NativeTrackPlayerImpl: NSObject, AudioSessionControllerDelegate {
         if (rejectWhenNotInitialized(reject: reject)) { return }
 
         player.repeatMode = SwiftAudioEx.RepeatMode(rawValue: repeatMode.intValue) ?? .off
+        emit(
+            event: EventType.PlaybackRepeatModeChanged,
+            body: [
+                "repeatMode": player.repeatMode.rawValue
+            ]
+        )
         resolve(NSNull())
     }
 
