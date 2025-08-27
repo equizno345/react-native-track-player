@@ -10,6 +10,7 @@
 * onStartCommandIntentValid ([26a5826](https://github.com/doublesymmetry/react-native-track-player/commit/26a5826c2214083b7106a44403e9fa29f9aed643))
 * **web:** add setQueue method ([#2394](https://github.com/doublesymmetry/react-native-track-player/issues/2394)) ([2765d09](https://github.com/doublesymmetry/react-native-track-player/commit/2765d09cb93541d89be94a4809320e4df33c0d47))
 * **web:** migrate web to turbomodule architecture ([f3fc4d5](https://github.com/doublesymmetry/react-native-track-player/commit/f3fc4d560154987dd7d341648b3ee6ac01972e15))
+* **android:** allow setting up the player from native Android code
 
 ### Bug Fixes
 

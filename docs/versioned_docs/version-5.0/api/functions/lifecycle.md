@@ -10,6 +10,10 @@ You should always call this function (even without any options set) before using
 
 Note that on Android this method must only be called while the app is in the foreground, otherwise it will throw an error with code `'android_cannot_setup_player_in_background'`. In this case you can wait for the app to be in the foreground and try again.
 
+If you need to initialise the player from native Android code (for example from an App Widget), the library exposes a Kotlin helper:
+`com.doublesymmetry.trackplayer.TrackPlayer.setupPlayer(context, bundle)`.
+Calling this mirrors the behaviour of the JavaScript `setupPlayer` call so the player can be prepared without a React instance.
+
 **Returns:** `Promise`
 
 | Param                | Type     | Description   | Default   | Android | iOS | Web |
