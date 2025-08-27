@@ -23,6 +23,11 @@ Fired when the state of the player changes.
 
 The new event also includes the full track objects for the newly active and last tracks.
 
+On Android this event is also broadcast using an intent with the action
+`com.doublesymmetry.trackplayer.playback-active-track-changed`. A broadcast
+receiver can register for this action to be notified when the active track
+changes.
+
 | Param    | Type     | Description                               |
 | -------- | -------- | ----------------------------------------- |
 | lastIndex | `number`  \| `undefined` | The index of previously active track. |

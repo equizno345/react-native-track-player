@@ -515,6 +515,10 @@ class MusicService : HeadlessJsMediaService() {
             }
         }
         emit(MusicEvents.PLAYBACK_ACTIVE_TRACK_CHANGED, bundle)
+        // Broadcast active track changes for external listeners
+        val intent = Intent(MusicEvents.PLAYBACK_ACTIVE_TRACK_CHANGED_INTENT)
+        intent.putExtras(bundle)
+        sendBroadcast(intent)
     }
 
     private fun emitQueueEndedEvent() {
