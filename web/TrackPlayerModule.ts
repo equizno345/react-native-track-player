@@ -152,6 +152,19 @@ export class TrackPlayerModule extends PlaylistPlayer implements Spec {
     return this.current;
   }
 
+  public async setRepeatMode(mode: number): Promise<number> {
+    super.setRepeatMode(mode as RepeatMode);
+    this.emitter.emit(Event.PlaybackRepeatModeChanged, {
+      repeatMode: mode as RepeatMode,
+    });
+    return mode;
+  }
+
+  // @ts-expect-error - promise return
+  public async getRepeatMode(): Promise<number> {
+    return super.getRepeatMode() as number;
+  }
+
   public async getActiveTrackIndex(): Promise<number | undefined> {
     // per the existing spec, this should throw if setup hasn't been called
     if (!this.element || !this.player) throw new SetupNotCalledError();

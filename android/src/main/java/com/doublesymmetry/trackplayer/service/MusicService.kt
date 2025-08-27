@@ -653,6 +653,24 @@ class MusicService : HeadlessJsMediaService() {
         }
 
         scope.launch {
+            event.repeatModeChange.collect {
+                Bundle().apply {
+                    putInt("repeatMode", it.ordinal)
+                    emit(MusicEvents.PLAYBACK_REPEAT_MODE_CHANGED, this)
+                }
+            }
+        }
+
+        scope.launch {
+            event.shuffleModeChange.collect {
+                Bundle().apply {
+                    putBoolean("shuffleMode", it)
+                    emit(MusicEvents.PLAYBACK_SHUFFLE_MODE_CHANGED, this)
+                }
+            }
+        }
+
+        scope.launch {
             event.playbackError.collect {
                 emit(MusicEvents.PLAYBACK_ERROR, getPlaybackErrorBundle())
             }

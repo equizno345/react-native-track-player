@@ -5,10 +5,10 @@ import androidx.media3.common.MediaMetadata
 import androidx.media3.common.Metadata
 import androidx.media3.common.util.UnstableApi
 import com.doublesymmetry.kotlinaudio.models.*
-import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.asSharedFlow
-import kotlinx.coroutines.launch
+  import kotlinx.coroutines.MainScope
+  import kotlinx.coroutines.flow.MutableSharedFlow
+  import kotlinx.coroutines.flow.asSharedFlow
+  import kotlinx.coroutines.launch
 
 class PlayerEventHolder {
     private val coroutineScope = MainScope()
@@ -22,12 +22,24 @@ class PlayerEventHolder {
     private var _playbackError = MutableSharedFlow<PlaybackError>(1)
     var playbackError = _playbackError.asSharedFlow()
 
-    private var _playWhenReadyChange = MutableSharedFlow<PlayWhenReadyChangeData>(1)
-    /**
-     * Use these events to track when [com.doublesymmetry.kotlinaudio.players.BaseAudioPlayer.playWhenReady]
-     * changes.
-     */
-    var playWhenReadyChange = _playWhenReadyChange.asSharedFlow()
+      private var _playWhenReadyChange = MutableSharedFlow<PlayWhenReadyChangeData>(1)
+      /**
+       * Use these events to track when [com.doublesymmetry.kotlinaudio.players.BaseAudioPlayer.playWhenReady]
+       * changes.
+       */
+      var playWhenReadyChange = _playWhenReadyChange.asSharedFlow()
+
+      private var _repeatModeChange = MutableSharedFlow<RepeatMode>(1)
+      /**
+       * Use these events to track when the repeat mode changes.
+       */
+      var repeatModeChange = _repeatModeChange.asSharedFlow()
+
+      private var _shuffleModeChange = MutableSharedFlow<Boolean>(1)
+      /**
+       * Use these events to track when shuffle mode changes.
+       */
+      var shuffleModeChange = _shuffleModeChange.asSharedFlow()
 
     private var _audioItemTransition = MutableSharedFlow<AudioItemTransitionReason?>(1)
 
@@ -73,11 +85,23 @@ class PlayerEventHolder {
         }
     }
 
-    internal fun updatePlayWhenReadyChange(playWhenReadyChange: PlayWhenReadyChangeData) {
-        coroutineScope.launch {
-            _playWhenReadyChange.emit(playWhenReadyChange)
-        }
-    }
+      internal fun updatePlayWhenReadyChange(playWhenReadyChange: PlayWhenReadyChangeData) {
+          coroutineScope.launch {
+              _playWhenReadyChange.emit(playWhenReadyChange)
+          }
+      }
+
+      internal fun updateRepeatModeChange(repeatMode: RepeatMode) {
+          coroutineScope.launch {
+              _repeatModeChange.emit(repeatMode)
+          }
+      }
+
+      internal fun updateShuffleModeChange(shuffleModeEnabled: Boolean) {
+          coroutineScope.launch {
+              _shuffleModeChange.emit(shuffleModeEnabled)
+          }
+      }
 
     internal fun updateAudioItemTransition(reason: AudioItemTransitionReason) {
         coroutineScope.launch {

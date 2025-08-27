@@ -1,6 +1,6 @@
 package com.doublesymmetry.kotlinaudio.event
 
-class EventHolder internal constructor(private val playerEventHolder: PlayerEventHolder) {
+  class EventHolder internal constructor(private val playerEventHolder: PlayerEventHolder) {
     val audioItemTransition
         get() = playerEventHolder.audioItemTransition
 
@@ -19,11 +19,17 @@ class EventHolder internal constructor(private val playerEventHolder: PlayerEven
     val playbackEnd
         get() = playerEventHolder.playbackEnd
 
-    val playWhenReadyChange
-        get() = playerEventHolder.playWhenReadyChange
+      val playWhenReadyChange
+          get() = playerEventHolder.playWhenReadyChange
 
-    val stateChange
-        get() = playerEventHolder.stateChange
+      val repeatModeChange
+          get() = playerEventHolder.repeatModeChange
+
+      val shuffleModeChange
+          get() = playerEventHolder.shuffleModeChange
+
+      val stateChange
+          get() = playerEventHolder.stateChange
 
     val playbackError
         get() = playerEventHolder.playbackError
